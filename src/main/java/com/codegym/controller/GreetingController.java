@@ -13,11 +13,6 @@ import java.util.Map;
 public class GreetingController {
 
 
-
-    public String translateToVN(String word){
-
-        return "NOT FOUND";
-    }
     @GetMapping("/")
     public String greeting( Model model) {
         return "index";
