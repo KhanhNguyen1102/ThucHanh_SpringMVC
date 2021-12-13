@@ -11,17 +11,8 @@ import java.util.Map;
 
 @Controller
 public class GreetingController {
-    private ArrayList<String> eng = new ArrayList();
-    private ArrayList<String> vn = new ArrayList();
 
-    public GreetingController() {
-        eng.add("hello");
-        eng.add("dog");
-        eng.add("cat");
-        vn.add("xin chao");
-        vn.add("cho");
-        vn.add("meo");
-    }
+
 
     public String translateToVN(String word){
 
@@ -61,6 +52,21 @@ public class GreetingController {
     }
     @PostMapping("/trans")
     public String translate1(Model model,@RequestParam String word){
-        return null;
+        ArrayList<String> eng = new ArrayList();
+        ArrayList<String> vn = new ArrayList();
+        eng.add("hello");
+        eng.add("dog");
+        eng.add("cat");
+        vn.add("xin chao");
+        vn.add("cho");
+        vn.add("meo");
+        for (int i = 0; i < eng.size(); i++) {
+            if (eng.get(i).equals(word)){
+                model.addAttribute("transResult",vn.get(i));
+                return "trans";
+            }else model.addAttribute("transResult","NOT FOUND");
+
+        }
+        return "trans";
     }
 }
